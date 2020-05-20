@@ -149,26 +149,6 @@
   });
 
 
-
-  // displaying time and date in right sidebar
-  var interval = setInterval(function() {
-    var momentNow = moment();
-    $('#brDate').html(momentNow.format('MMMM DD, YYYY') + ' '
-      + momentNow.format('dddd')
-      .substring(0,3).toUpperCase());
-      $('#brTime').html(momentNow.format('hh:mm:ss A'));
-  }, 100);
-
-  // Datepicker
-  if($().datepicker) {
-    $('.form-control-datepicker').datepicker()
-      .on("change", function (e) {
-        console.log("Date changed: ", e.target.value);
-    });
-  }
-
-
-
   // custom scrollbar style
   $('.overflow-y-auto').perfectScrollbar();
 
@@ -177,9 +157,6 @@
 
   // switch button
   $('.switch-button').switchButton();
-
-  // peity charts
-  $('.peity-bar').peity('bar');
 
   // highlight syntax highlighter
   $('pre code').each(function(i, block) {
@@ -191,7 +168,6 @@
 
   // Initialize popover
   $('[data-popover-color="default"]').popover();
-
 
 
   // By default, Bootstrap doesn't auto close popover after appearing in the page
