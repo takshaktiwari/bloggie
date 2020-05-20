@@ -73,7 +73,13 @@
                                 </div>
                             </li>
                         @endforeach
-                        
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('categories') }}">
+                                All categories
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('contact') }}">
                                 Contact
