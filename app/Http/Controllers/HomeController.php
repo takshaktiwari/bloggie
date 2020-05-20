@@ -9,19 +9,16 @@ class HomeController extends Controller
 {
    	public function index()
    	{
-   		$post_single = \App\Post::where('status', '1')->first();
 
-   		$post_featured = \App\Post::where('status', '1')
-   								->where('featured', '1')
-   								->limit(3)
-   								->get()->all();
+   		$slider = \App\Slider::where('status', '1')
+                           ->orderBy('set_order', 'ASC')
+                           ->get()->all();
 
    		$post_latest = \App\Post::where('status', '1')
    								->limit(8)
    								->get()->all();						
 
-   		return view('homepage')->with('post_single', $post_single)
-   								->with('post_featured', $post_featured)
+   		return view('homepage')->with('slider', $slider)
    								->with('post_latest', $post_latest);
    	}
 

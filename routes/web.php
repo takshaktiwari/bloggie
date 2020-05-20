@@ -42,6 +42,13 @@ Route::post('admin/page/create', 'PageController@store');
 Route::get('admin/page/edit/{id}', 'PageController@edit');
 Route::get('admin/page/delete/{id}', 'PageController@delete');
 
+Route::get('admin/slider', 'SliderController@index');
+Route::get('admin/slide/create', 'SliderController@create');
+Route::post('admin/slide/create', 'SliderController@store');
+Route::get('admin/slide/edit/{id}', 'SliderController@edit');
+Route::post('admin/slide/update', 'SliderController@update');
+Route::get('admin/slide/delete/{id}', 'SliderController@destroy');
+
 Route::get('admin/users', 'UserController@users');
 Route::get('admin/user/delete/{id}', 'UserController@delete');
 Route::get('admin/user/status_update/{status}/{id}', 'UserController@status_update');

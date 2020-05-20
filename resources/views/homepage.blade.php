@@ -4,64 +4,36 @@
 @section('keywords', 'Home')
 @section('description', 'Home')
 
+@section('styles')
+	@parent
+	<link rel="stylesheet" href="{{ url('assets/css/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ url('assets/css/owl.theme.default.css') }}">
+	<style>
+		.home-slider .slide{
+			background-size: cover;
+			background-position: center;
+			border-radius: 6px;
+			color: white;
+			text-shadow: 0px 0px 2px black;
+		}
+	</style>
+@endsection
+
 @section('content')
 
 	<!-- Slider -->
 	<div class="container mb-5">
-	    <div class="zero-one-carousel-container">
-            <div class="bg-image">
-                <a href="{{ url('post/'.$post_single->slug) }}">
-                	<img src="{{ url('storage'.$post_single->image_lg) }}" alt="Picture" class="mb-0">
-                </a>
-            </div>
-	        <ul class="zero-one-carousel-nav">
-	        	@foreach($post_featured as $key => $post)
-		            <li>
-		                <h4 class="carousel-nav-title">
-		                	<a href="{{ url('post/'.$post->slug) }}">
-		                		{{ $post->title }}
-		                	</a>
-		                </h4>
-		                <div class="post_meta_top">
-		                    <span class="post_meta_category">
-		                        @if(isset($post->categories))
-		                            @foreach($post->categories as $category)
-		                                <a href="{{ url('post?category='.$category->slug) }}">
-		                                    {{ $category->category }}
-		                                </a>
-		                            @endforeach
-		                        @else
-		                            <a href="javascript:void(0)">
-		                                Un-Categorized
-		                            </a>
-		                        @endif
-		                    </span>
-		                    <span class="post_meta_date">
-		                    	{{ date('M d, Y', strtotime($post->created_at)) }}
-		                    </span>
-		                </div>
-		            </li>
-	            @endforeach
-	        </ul>
-	    </div>
-	    <div class="bg-white text-center py-4">
-	    	<a href="{{ url('post/'.$post_single->slug) }}">
-	    		<h4 class="mt-0 mb-2">{{ $post_single->title }}</h4>
-	    	</a>
-    		<div>
-    			@if(isset($post_single->categories))
-                    @foreach($post->categories as $category)
-                        <a href="{{ url('post?category='.$category->slug) }}">
-                            {{ $category->category }}
-                        </a>
-                    @endforeach
-                @else
-                    <a href="javascript:void(0)" class="mr-2">
-                        Un-Categorized
-                    </a>
-                @endif
-    			{{ date('M d, Y', strtotime($post_single->created_at)) }}
-    		</div>
+	    <div class="owl-carousel home-slider">
+	    	@foreach($slider as $slide)
+	    	<div class="slide py-5 px-sm-5 px-3" style="background-image: url({{ url('storage'.$slide->image_lg) }})">
+	    		<div class="row">
+	    			<div class="col-md-7 py-sm-5 py-4">
+	    				<h1 class="text-white">{{ $slide->title }}</h1>
+	    				<p class="text-white">{{ $slide->caption }}</p>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	@endforeach
 	    </div>
 	</div>
 
@@ -130,4 +102,19 @@
 	@include('includes/latest-posts')
 	@include('includes/subscribe')
 
+@endsection
+
+@section('scripts')
+	@parent
+	<script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
+	<script>
+		$('.owl-carousel').owlCarousel({
+			autoplay: true,
+		    loop:true,
+		    margin:10,
+		    nav:true,
+		    dots: true,
+		    items: 1,
+		})
+	</script>
 @endsection

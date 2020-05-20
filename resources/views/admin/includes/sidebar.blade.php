@@ -48,6 +48,13 @@
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
 
+        <a href="{{ url('admin/slider') }}" class="br-menu-link">
+            <div class="br-menu-item">
+                <i class="far fa-images"></i>
+                <span class="menu-item-label">Slider</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+
         <a href="{{ url('admin/users') }}" class="br-menu-link">
             <div class="br-menu-item">
                 <i class="fas fa-users"></i>
